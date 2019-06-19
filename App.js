@@ -111,7 +111,7 @@ export default class App extends React.Component {
         console.log(`Connected to device ${device.name}`);
         ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
       })
-      .catch((err) => console.log((err.message)))
+      .catch((err) => console.log((err.message)));
   }
 
   renderDevices(item) {
