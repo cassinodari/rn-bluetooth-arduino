@@ -103,6 +103,36 @@ export default class App extends React.Component {
       .catch((err) => console.log(err.message))
   }
 
+  activeBlueLed() {
+    BluetoothSerial.write("2")
+      .then((res) => {
+        console.log(res);
+        console.log('Successfuly wrote to device')
+        this.setState({ connected: true })
+      })
+      .catch((err) => console.log(err.message))
+  }
+
+  activeYellowLed() {
+    BluetoothSerial.write("3")
+      .then((res) => {
+        console.log(res);
+        console.log('Successfuly wrote to device')
+        this.setState({ connected: true })
+      })
+      .catch((err) => console.log(err.message))
+  }
+
+  activeBomb() {
+    BluetoothSerial.write("4")
+      .then((res) => {
+        console.log(res);
+        console.log('Successfuly wrote to device')
+        this.setState({ connected: true })
+      })
+      .catch((err) => console.log(err.message))
+  }
+
   connect(device) {
     this.setState({ connected: true });
 
@@ -139,6 +169,7 @@ export default class App extends React.Component {
           </View>
         </View>
 
+
         <Button
           onPress={this.discoverAvailableDevices.bind(this)}
           title="Scan for Devices"
@@ -153,6 +184,12 @@ export default class App extends React.Component {
         />
 
         <Button
+          onPress={this.activeBomb.bind(this)}
+          title="Bomba"
+          color="#A9A9A9"
+        />
+
+        <Button
           onPress={this.activeGreenLed.bind(this)}
           title="Green"
           color="#287731"
@@ -162,6 +199,18 @@ export default class App extends React.Component {
           onPress={this.activeRedLed.bind(this)}
           title="Red"
           color="#aa3443"
+        />
+
+        <Button
+          onPress={this.activeBlueLed.bind(this)}
+          title="Blue"
+          color="#4682B4"
+        />
+
+        <Button
+          onPress={this.activeYellowLed.bind(this)}
+          title="Yellow"
+          color="#FFD700"
         />
       </View>
     )
