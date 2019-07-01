@@ -133,6 +133,16 @@ export default class App extends React.Component {
       .catch((err) => console.log(err.message))
   }
 
+  activeMusic() {
+    BluetoothSerial.write("5")
+      .then((res) => {
+        console.log(res);
+        console.log('Successfuly wrote to device')
+        this.setState({ connected: true })
+      })
+      .catch((err) => console.log(err.message))
+  }
+
   connect(device) {
     this.setState({ connected: true });
 
@@ -184,8 +194,14 @@ export default class App extends React.Component {
         />
 
         <Button
+          onPress={this.activeMusic.bind(this)}
+          title="Music"
+          color="#800080"
+        />
+
+        <Button
           onPress={this.activeBomb.bind(this)}
-          title="Bomba"
+          title="Water"
           color="#A9A9A9"
         />
 
